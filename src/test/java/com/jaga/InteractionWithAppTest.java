@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
@@ -35,6 +36,9 @@ public class InteractionWithAppTest extends BaseTest {
         // Custom Xpath
         driver.findElement(By.xpath(
                 "(//android.widget.RelativeLayout)[2]")).click();
+        //Assert for Wifi Title
+        String title = driver.findElement(By.id("android:id/alertTitle")).getText();
+        Assert.assertEquals(title, "WiFi settings");
         // Id
         driver.findElement(By.id("android:id/edit")).sendKeys("Jaga Wifi");
         // ClassName
