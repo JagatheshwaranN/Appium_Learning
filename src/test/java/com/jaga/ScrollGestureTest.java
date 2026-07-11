@@ -18,8 +18,6 @@ import java.time.Duration;
 
 public class ScrollGestureTest extends BaseTest {
 
-
-
     @Test
     private void scrollGestureApproach1() throws InterruptedException, URISyntaxException, MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
