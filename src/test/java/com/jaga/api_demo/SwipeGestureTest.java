@@ -1,4 +1,4 @@
-package com.jaga;
+package com.jaga.api_demo;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
@@ -16,10 +16,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
-public class DragDropGestureTest extends BaseTest {
+public class SwipeGestureTest extends BaseTest {
 
     @Test
-    public void dragDropGestureTest() throws URISyntaxException, MalformedURLException, InterruptedException {
+    public void swipeGestureTest() throws URISyntaxException, MalformedURLException, InterruptedException {
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Jaga Phone");
@@ -28,16 +28,17 @@ public class DragDropGestureTest extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.findElement(AppiumBy.accessibilityId("Views")).click();
-        driver.findElement(AppiumBy.accessibilityId("Drag and Drop")).click();
-        WebElement source = driver.findElement(By.id("io.appium.android.apis:id/drag_dot_1"));
-        Assert.assertNotNull(((RemoteWebElement) source).getId());
-        driver.executeScript("mobile: dragGesture", ImmutableMap.of(
-                "elementId", ((RemoteWebElement) source).getId(),
-                "endX", 715,
-                "endY", 715
+        driver.findElement(AppiumBy.accessibilityId("Gallery")).click();
+        driver.findElement(AppiumBy.accessibilityId("1. Photos")).click();
+        WebElement firstImage = driver.findElement(By.xpath("//android.widget.Gallery[@resource-id='io.appium.android.apis:id/gallery']/android.widget.ImageView[1]"));
+        Assert.assertEquals(firstImage.getAttribute("focusable"), "true");
+        Assert.assertNotNull(((RemoteWebElement) firstImage).getId());
+        ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement)firstImage).getId(),
+                "direction", "left",
+                "percent", 0.5
         ));
-        String result = driver.findElement(By.id("io.appium.android.apis:id/drag_result_text")).getText();
-        Assert.assertEquals(result, "Dropped!");
+        Assert.assertEquals(driver.findElement(By.xpath("//android.widget.Gallery[@resource-id='io.appium.android.apis:id/gallery']/android.widget.ImageView[1]")).getAttribute("focusable"), "false");
         Thread.sleep(3000);
         driver.quit();
     }

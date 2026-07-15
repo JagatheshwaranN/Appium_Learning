@@ -1,4 +1,4 @@
-package com.jaga;
+package com.jaga.api_demo;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;

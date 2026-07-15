@@ -1,4 +1,4 @@
-package com.jaga;
+package com.jaga.api_demo;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -43,6 +43,6 @@ public class AppiumBasicsTest extends BaseTest {
 
         Thread.sleep(3000);
         driver.quit();
-
     }
+
 }

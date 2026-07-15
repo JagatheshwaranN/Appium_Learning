@@ -1,4 +1,4 @@
-package com.jaga;
+package com.jaga.api_demo;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
