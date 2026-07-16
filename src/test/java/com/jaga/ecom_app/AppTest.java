@@ -26,6 +26,7 @@ public class AppTest {
         service.start();
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 5");
+        options.setChromedriverExecutable(System.getProperty("user.dir") + "//src//test//resources//driver//chromedriver.exe");
         options.setApp(System.getProperty("user.dir") + "//src//test//resources//General-Store.apk");
         driver = new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
