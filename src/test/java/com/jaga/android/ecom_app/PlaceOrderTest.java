@@ -1,10 +1,8 @@
-package com.jaga.ecom_app;
+package com.jaga.android.ecom_app;
 
 
 import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,10 +13,10 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class CartTotalTest extends AppTest {
+public class PlaceOrderTest extends AppTest {
 
     @Test
-    public void cartTotalTest() throws InterruptedException {
+    public void placeOrderTest() throws InterruptedException {
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Jason");
         driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
         Thread.sleep(1000);
@@ -41,6 +39,15 @@ public class CartTotalTest extends AppTest {
         String cartAmount = driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText();
         double cartTotal = Double.parseDouble(cartAmount.substring(1));
         Assert.assertEquals(cartTotal, totalPrice);
+
+        WebElement termsAndCondition = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
+        Assert.assertNotNull(((RemoteWebElement) termsAndCondition).getId());
+        driver.executeScript("mobile: longClickGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement) termsAndCondition).getId(), "duration", 2000));
+        driver.findElement(By.id("android:id/button1")).click();
+        driver.findElement(By.className("android.widget.CheckBox")).click();
+        driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
+
         Thread.sleep(3000);
     }
 

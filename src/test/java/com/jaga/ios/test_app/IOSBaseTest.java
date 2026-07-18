@@ -1,7 +1,7 @@
-package com.jaga.mobile_browser;
+package com.jaga.ios.test_app;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterTest;
@@ -13,28 +13,32 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
-public class MobileBrowserTest {
+public class IOSBaseTest {
 
-    private AppiumDriverLocalService service;
-    public AndroidDriver driver;
+    public AppiumDriverLocalService service;
+    public IOSDriver driver;
 
     @BeforeTest
     public void startServer() throws URISyntaxException, MalformedURLException {
-        //Server Start
         service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//jagat//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
                 .withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("Pixel 5");
-        options.setChromedriverExecutable(System.getProperty("user.dir") + "//src//test//resources//driver//chromedriver.exe");
-        options.setCapability("browserName", "Chrome");
-        driver = new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), options);
+
+        XCUITestOptions options = new XCUITestOptions();
+        options.setDeviceName("iPhone 16 Pro");
+        options.setApp("/Users/jaga/Desktop/TestApp_3.app");
+        options.setPlatformVersion("17.5");
+        // Appium -> WebDriver Agent -> IOS apps
+        options.setWdaLaunchTimeout(Duration.ofSeconds(20));
+
+        driver = new IOSDriver(new URI("http://127.0.0.1:4723").toURL(), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterTest
     public void stopServer() {
-        // Server Stop
+        driver.quit();
         service.stop();
     }
+
 }

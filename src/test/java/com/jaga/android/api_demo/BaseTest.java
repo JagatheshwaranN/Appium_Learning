@@ -1,4 +1,4 @@
-package com.jaga.api_demo;
+package com.jaga.android.api_demo;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;

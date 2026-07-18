@@ -1,4 +1,4 @@
-package com.jaga.ecom_app;
+package com.jaga.android.ecom_app;
 
 
 import com.google.common.collect.ImmutableMap;

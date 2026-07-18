@@ -1,4 +1,4 @@
-package com.jaga.mobile_browser;
+package com.jaga.android.mobile_browser;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
