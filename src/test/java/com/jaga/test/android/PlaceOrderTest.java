@@ -1,4 +1,4 @@
-package com.jaga.test;
+package com.jaga.test.android;
 
 
 import com.jaga.pageObject.android.CartPage;
@@ -6,7 +6,7 @@ import com.jaga.pageObject.android.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PlaceOrderTest extends AppTest {
+public class PlaceOrderTest extends AndroidAppTest {
 
     @Test
     public void placeOrderTest() throws InterruptedException {
