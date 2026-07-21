@@ -25,4 +25,9 @@ public class AppiumUtil {
     public void waitForElementAttributeCheck(WebElement element, String value) {
         wait.until(ExpectedConditions.attributeContains(element, "text", value));
     }
+
+    public String getElementAttributeValue(WebElement element, String attribute) {
+            return element.getAttribute(attribute);
+    }
+
 }

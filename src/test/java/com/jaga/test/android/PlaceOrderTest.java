@@ -11,7 +11,7 @@ public class PlaceOrderTest extends AndroidAppTest {
     @Test
     public void placeOrderTest() throws InterruptedException {
 
-        homePage.setName("Jason");
+        homePage.setName("Jessy");
         homePage.setGender("Female");
         homePage.setCountrySelection("Argentina");
         ProductListPage productListPage = homePage.submitForm();
