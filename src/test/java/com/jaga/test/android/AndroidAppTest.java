@@ -37,6 +37,7 @@ public class AndroidAppTest {
 
     @AfterTest
     public void stopServer() {
+        driver.quit();
         // Server Stop
         service.stop();
     }

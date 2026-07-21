@@ -6,7 +6,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class CartPage extends AndroidAction  {
 
 
     public void verifyCarTitle(String title) {
-        wait.until(ExpectedConditions.attributeContains(cartTitle, "text", title));
+       waitForElementAttributeCheck(cartTitle, title);
     }
 
     public double calculateCartTotal() {
@@ -58,7 +57,7 @@ public class CartPage extends AndroidAction  {
     }
 
     public double getCartTotalOnPage() {
-        return Double.parseDouble(cartAmount.getText().substring(1));
+        return getFormatAmountValue(cartAmount.getText());
     }
 
     public void acceptTermsAndCondition() {

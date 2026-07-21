@@ -1,18 +1,15 @@
 package com.jaga.util.ios;
 
+import com.jaga.util.appium.AppiumUtil;
 import io.appium.java_client.ios.IOSDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class IOSAction {
+public class IOSAction extends AppiumUtil {
 
     IOSDriver driver;
-    public WebDriverWait wait;
 
     public IOSAction(IOSDriver driver) {
+        super(driver);
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
 

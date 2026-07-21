@@ -1,22 +1,19 @@
 package com.jaga.util.android;
 
 import com.google.common.collect.ImmutableMap;
+import com.jaga.util.appium.AppiumUtil;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class AndroidAction {
+public class AndroidAction extends AppiumUtil {
 
     AndroidDriver driver;
-    public WebDriverWait wait;
 
     public AndroidAction(AndroidDriver driver) {
+        super(driver);
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public void scrollToText(String text) {
