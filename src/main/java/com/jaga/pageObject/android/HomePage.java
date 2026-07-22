@@ -8,7 +8,10 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends AndroidAction {
@@ -36,8 +39,11 @@ public class HomePage extends AndroidAction {
     @AndroidFindBy(id = "com.androidsample.generalstore:id/btnLetsShop")
     private WebElement letShopButton;
 
+//    @AndroidFindBy(xpath = "(//android.widget.Toast)[1]")
+//    private List<WebElement> toastMessage;
+
     @AndroidFindBy(xpath = "(//android.widget.Toast)[1]")
-    private List<WebElement> toastMessage;
+    private WebElement toastMessage;
 
 
     public void setName(String name) {
@@ -64,12 +70,17 @@ public class HomePage extends AndroidAction {
         return new ProductListPage(driver);
     }
 
-    public List<WebElement> toastMessage() {
-        return toastMessage;
+    public String getToastMessageContent() {
+        return getElementAttributeValue(toastMessage, "name");
     }
 
-    public String getToastMessageContent() {
-        return getElementAttributeValue(toastMessage.get(0), "name");
+    public boolean isErrorToastNotDisplayed() {
+        try {
+            return wait.until(ExpectedConditions.invisibilityOf(
+                            toastMessage));
+        } catch (Exception e) {
+            return true; // never appeared at all
+        }
     }
 
 }

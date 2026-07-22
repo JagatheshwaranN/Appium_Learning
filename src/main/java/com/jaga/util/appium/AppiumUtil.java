@@ -30,4 +30,5 @@ public class AppiumUtil {
             return element.getAttribute(attribute);
     }
 
+
 }

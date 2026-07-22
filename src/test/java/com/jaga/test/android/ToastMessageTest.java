@@ -40,7 +40,7 @@ public class ToastMessageTest extends AndroidAppTest {
         homePage.setName("Jessy");
         homePage.setGender("Female");
         homePage.submitForm();
-        Assert.assertTrue(homePage.toastMessage().isEmpty());
+        Assert.assertTrue(homePage.isErrorToastNotDisplayed());
         Thread.sleep(1000);
     }
 
