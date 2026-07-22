@@ -1,6 +1,8 @@
 package com.jaga.util.appium;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,11 +17,17 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
-public class AppiumUtil {
+public class AppiumUtil extends  FileReader {
 
-
-    public AppiumDriver driver;
+    AppiumDriverLocalService service;
     public WebDriverWait wait;
+
+    public AppiumDriverLocalService startAppiumServer(String ipAddress, int port) {
+        service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//jagat//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
+                .withIPAddress(ipAddress).usingPort(port).build();
+        service.start();
+        return service;
+    }
 
     public double getFormatAmountValue(String amount) {
         return Double.parseDouble(amount.substring(1));

@@ -1,5 +1,6 @@
 package com.jaga.test.android;
 
+import com.jaga.test.base.AndroidAppTest;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.appmanagement.ApplicationState;
 import org.openqa.selenium.support.ui.WebDriverWait;

@@ -1,8 +1,7 @@
 package com.jaga.test.ios;
 
 import com.jaga.pageObject.ios.AlertViewPage;
-import com.jaga.pageObject.ios.HomePage;
-import io.appium.java_client.AppiumBy;
+import com.jaga.test.base.IOSAppTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

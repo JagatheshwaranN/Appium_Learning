@@ -1,20 +1,19 @@
-package com.jaga.test.ios;
+package com.jaga.test.base;
 
 import com.jaga.pageObject.ios.HomePage;
+import com.jaga.util.appium.AppiumUtil;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
-public class IOSAppTest {
+public class IOSAppTest extends AppiumUtil {
 
     public AppiumDriverLocalService service;
     public IOSDriver driver;
@@ -22,9 +21,8 @@ public class IOSAppTest {
 
     @BeforeTest
     public void startServer() throws URISyntaxException, MalformedURLException {
-        service = new AppiumServiceBuilder().withAppiumJS(new File("C://Users//jagat//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
-                .withIPAddress("127.0.0.1").usingPort(4723).build();
-        service.start();
+        //Server Start
+        service = startAppiumServer(getDataFromPropFile("ipAddress"), Integer.parseInt(getDataFromPropFile("port")));
 
         XCUITestOptions options = new XCUITestOptions();
         options.setDeviceName("iPhone 16 Pro");
