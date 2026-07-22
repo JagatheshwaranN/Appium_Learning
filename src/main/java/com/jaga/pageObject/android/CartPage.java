@@ -42,7 +42,7 @@ public class CartPage extends AndroidAction  {
 
 
     public void verifyCarTitle(String title) {
-       waitForElementAttributeCheck(cartTitle, title);
+       waitForElementAttributeCheck(cartTitle, title, driver);
     }
 
     public double calculateCartTotal() {

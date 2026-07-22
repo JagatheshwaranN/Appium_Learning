@@ -36,5 +36,19 @@
           <version>4.45.0</version>
           <scope>compile</scope>
       </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/commons-io/commons-io -->
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.22.0</version>
+          <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+      <dependency>
+          <groupId>tools.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>3.2.1</version>
+          <scope>compile</scope>
+      </dependency>
   </dependencies>
 </project>

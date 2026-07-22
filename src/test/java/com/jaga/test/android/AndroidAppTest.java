@@ -1,6 +1,7 @@
 package com.jaga.test.android;
 
 import com.jaga.pageObject.android.HomePage;
+import com.jaga.util.appium.AppiumUtil;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.appmanagement.ApplicationState;
@@ -16,7 +17,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
-public class AndroidAppTest {
+public class AndroidAppTest extends AppiumUtil {
 
     private AppiumDriverLocalService service;
     public AndroidDriver driver;

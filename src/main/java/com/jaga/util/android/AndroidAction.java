@@ -12,7 +12,6 @@ public class AndroidAction extends AppiumUtil {
     AndroidDriver driver;
 
     public AndroidAction(AndroidDriver driver) {
-        super(driver);
         this.driver = driver;
     }
 
