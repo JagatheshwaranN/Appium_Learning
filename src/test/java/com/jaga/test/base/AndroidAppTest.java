@@ -23,6 +23,7 @@ public class AndroidAppTest extends AppiumUtil {
 
     @BeforeClass
     public void startServer() throws URISyntaxException, IOException {
+        loadPropertyFile();
         //Server Start
         service = startAppiumServer(getDataFromPropFile("ipAddress"), Integer.parseInt(getDataFromPropFile("port")));
 

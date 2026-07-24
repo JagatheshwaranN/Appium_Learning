@@ -30,9 +30,9 @@ public class FileReader {
             data = properties.getProperty(key);
             if (data != null) {
                 data = data.strip();
-                System.out.println("The data fetched from the configuration file" + data);
+                System.out.println("The data fetched from the configuration file: " + data);
             } else {
-                System.out.println("The key is not present in the configuration file" + key);
+                System.out.println("The key is not present in the configuration file: " + key);
                 throw new RuntimeException("Key Not Found");
             }
         }
