@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class ToastMessageTest extends AndroidAppTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preConstruct() throws IOException, InterruptedException {
         // force-stop to clear whatever screen the previous test left the app on
         driver.terminateApp("com.androidsample.generalstore");
@@ -32,7 +32,7 @@ public class ToastMessageTest extends AndroidAppTest {
         homePage.setGender("Female");
         homePage.submitForm();
         String toastMessage = homePage.getToastMessageContent();
-        Assert.assertEquals(toastMessage, "Please enter your name");
+        Assert.assertEquals(toastMessage, "Please  your name");
         Thread.sleep(1000);
     }
 

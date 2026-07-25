@@ -19,7 +19,7 @@ import java.util.List;
 
 public class PlaceOrderTest extends AndroidAppTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preConstruct() throws IOException, InterruptedException {
         // force-stop to clear whatever screen the previous test left the app on
         driver.terminateApp("com.androidsample.generalstore");
@@ -33,7 +33,7 @@ public class PlaceOrderTest extends AndroidAppTest {
         );
     }
 
-    @Test(dataProvider = "provideData")
+    @Test(dataProvider = "provideData", groups = {"smoke"})
     public void placeOrderTest(HashMap<String, String> data) throws InterruptedException {
 
         homePage.setName(data.get("name"));

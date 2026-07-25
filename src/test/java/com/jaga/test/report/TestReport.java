@@ -8,7 +8,7 @@ public class TestReport {
     public static ExtentReports extentReports;
 
     public static ExtentReports getReport() {
-        String path = System.getProperty("user.dir") + "//reports//extent-report.html";
+        String path = System.getProperty("user.dir") + "//report//extent-report.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(path);
         reporter.config().setReportName("General Store - Android Test");
         reporter.config().setDocumentTitle("Mobile Test Automation Report");

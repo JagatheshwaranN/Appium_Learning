@@ -1,76 +1,113 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.jaga</groupId>
-  <artifactId>Appium_Learning</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>com.jaga</groupId>
+    <artifactId>Appium_Learning</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>Appium_Learning</name>
-  <url>http://maven.apache.org</url>
+    <name>Appium_Learning</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-      <!-- Source: https://mvnrepository.com/artifact/io.appium/java-client -->
-      <dependency>
-          <groupId>io.appium</groupId>
-          <artifactId>java-client</artifactId>
-          <version>10.1.1</version>
-<!--          <scope>compile</scope>-->
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
-      <dependency>
-          <groupId>org.testng</groupId>
-          <artifactId>testng</artifactId>
-          <version>7.12.0</version>
-          <scope>test</scope>
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
-      <dependency>
-          <groupId>org.seleniumhq.selenium</groupId>
-          <artifactId>selenium-support</artifactId>
-          <version>4.45.0</version>
-          <scope>compile</scope>
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/commons-io/commons-io -->
-      <dependency>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-          <version>2.22.0</version>
-          <scope>compile</scope>
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
-      <dependency>
-          <groupId>tools.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-          <version>3.2.1</version>
-          <scope>compile</scope>
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-      <dependency>
-          <groupId>com.aventstack</groupId>
-          <artifactId>extentreports</artifactId>
-          <version>5.1.2</version>
-          <scope>compile</scope>
-          <exclusions>
-              <exclusion>
-                  <groupId>org.projectlombok</groupId>
-                  <artifactId>lombok</artifactId>
-              </exclusion>
-          </exclusions>
-      </dependency>
-      <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-      <dependency>
-          <groupId>org.projectlombok</groupId>
-          <artifactId>lombok</artifactId>
-          <version>1.18.46</version>
-          <scope>compile</scope>
-      </dependency>
-  </dependencies>
+    <dependencies>
+        <!-- Source: https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>10.1.1</version>
+            <!--          <scope>compile</scope>-->
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.12.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>4.45.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.22.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>3.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.1.2</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.46</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>Regression</id>
+            <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.3.0</version>
+<!--                            <version>3.6.0-M1</version>-->
+                            <configuration>
+                                <suiteXmlFiles>
+                                    <suiteXmlFile>suite/testNG.xml</suiteXmlFile>
+                                </suiteXmlFiles>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Smoke</id>
+            <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.3.0</version>
+                            <configuration>
+                                <suiteXmlFiles>
+                                    <suiteXmlFile>suite/testng-smoke.xml</suiteXmlFile>
+                                </suiteXmlFiles>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+            </build>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>

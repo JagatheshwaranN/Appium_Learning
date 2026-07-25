@@ -1,9 +1,11 @@
 package com.jaga.util.appium;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +19,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
-public class AppiumUtil extends  FileReader {
+public class AppiumUtil extends FileReader {
 
     AppiumDriverLocalService service;
     public WebDriverWait wait;
@@ -53,6 +55,21 @@ public class AppiumUtil extends  FileReader {
         return mapper.readValue(jsonContent,
                 new TypeReference<List<HashMap<String, String>>>() {
                 });
+    }
+
+    public String takeScreenshot(AppiumDriver driver, String screenshotName) {
+        File sourceScreenFile = driver.getScreenshotAs(OutputType.FILE);
+        String destinationScreenPath = "report" + File.separator + "screenshot" + File.separator + screenshotName + ".png";
+        try {
+            FileUtils.copyFile(sourceScreenFile, new File(destinationScreenPath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return "screenshot" + File.separator + screenshotName + ".png";
+    }
+
+    public String takeScreenshotAsBase64(AppiumDriver driver) {
+                   return driver.getScreenshotAs(OutputType.BASE64);
     }
 
 

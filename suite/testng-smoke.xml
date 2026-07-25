@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Android Functional Suite">
+    <groups>
+        <run>
+            <include name="smoke" />
+        </run>
+    </groups>
     <listeners>
         <listener class-name="com.jaga.test.report.TestListener" />
     </listeners>
@@ -8,7 +13,7 @@
 		<classes>
 			<class name="com.jaga.test.android.PlaceOrderTest" />
 		</classes>
-	</test> <!-- Test -->
+	</test>
     <test thread-count="1" name="Toast Message Test">
         <classes>
             <class name="com.jaga.test.android.ToastMessageTest" />

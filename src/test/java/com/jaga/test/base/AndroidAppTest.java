@@ -21,7 +21,7 @@ public class AndroidAppTest extends AppiumUtil {
     public AndroidDriver driver;
     public HomePage homePage;
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void startServer() throws URISyntaxException, IOException {
         loadPropertyFile();
         //Server Start
@@ -43,7 +43,7 @@ public class AndroidAppTest extends AppiumUtil {
         homePage = new HomePage(driver);
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void stopServer() {
         driver.quit();
         // Server Stop
