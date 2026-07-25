@@ -21,11 +21,15 @@ public class AndroidAppTest extends AppiumUtil {
     public AndroidDriver driver;
     public HomePage homePage;
 
-    @BeforeClass (alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void startServer() throws URISyntaxException, IOException {
         loadPropertyFile();
         //Server Start
-        service = startAppiumServer(getDataFromPropFile("ipAddress"), Integer.parseInt(getDataFromPropFile("port")));
+        String ipAddress = System.getProperty("ipAddress") != null
+                ? System.getProperty("ipAddress") :
+                getDataFromPropFile("ipAddress");
+
+        service = startAppiumServer(ipAddress, Integer.parseInt(getDataFromPropFile("port")));
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName(getDataFromPropFile("androidDeviceName"));
@@ -33,6 +37,7 @@ public class AndroidAppTest extends AppiumUtil {
         options.setApp(System.getProperty("user.dir") + "//src//test//resources//General-Store.apk");
         options.setAppPackage("com.androidsample.generalstore");
         options.setCapability("appium:autoLaunch", false);
+        options.setCapability("appium:ignoreHiddenApiPolicyError", true);
         driver = new AndroidDriver(service.getUrl(), options);
         AppLauncher.launchViaMonkey("emulator-5554", "com.androidsample.generalstore");
         // wait for app to actually be foregrounded rather than a flat sleep
@@ -43,7 +48,7 @@ public class AndroidAppTest extends AppiumUtil {
         homePage = new HomePage(driver);
     }
 
-    @AfterClass (alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void stopServer() {
         driver.quit();
         // Server Stop

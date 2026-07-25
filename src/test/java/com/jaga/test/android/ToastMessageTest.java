@@ -27,16 +27,16 @@ public class ToastMessageTest extends AndroidAppTest {
         );
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void toastMessageTestPositive() throws InterruptedException {
         homePage.setGender("Female");
         homePage.submitForm();
         String toastMessage = homePage.getToastMessageContent();
-        Assert.assertEquals(toastMessage, "Please  your name");
+        Assert.assertEquals(toastMessage, "Please enter your name");
         Thread.sleep(1000);
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void toastMessageTestNegative() throws InterruptedException {
         homePage.setName("Jessy");
         homePage.setGender("Female");
