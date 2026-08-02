@@ -1,0 +1,13 @@
+Android: Automatic discovery of  compatible ChromeDriver
+========================================================
+No Need to manage ChromeDriver versions. Appium can automatically download the compatible
+ChromeDriver and use it for automating the browser.
+
+To download to default location
+===============================
+appium --allow-insecure chromedriver_autodownload
+
+To download to custom location
+==============================
+chromedriverExecutableDir
+options.setCapability("chromedriverExecutableDir", "Path");

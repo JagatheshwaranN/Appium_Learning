@@ -1,0 +1,29 @@
+Things to know
+==============
+The app related actions which are automated under the Android section as below can be done in iOS automation as well.
+1. ActivateAppForSwitching
+2. CheckAppInstalled
+3. DeviceLockAndUnlock
+4. InstallApp
+5. KeyEvents
+6. RemoveApp
+7. RunAppInBackground
+8. TerminateApp
+
+Note: For iOS, the above actions can be done using the Appium common wrapper methods as well as using the Javascript code.
+
+Mobile Web View
+===============
+Note: For iOS, Appium can automate WkWebView and UIWebView elements, but not SafariViewController elements.
+
+iOS: Hybrid app and Safari browser: Inspecting WebView elements using the Web Inspector(Simulator)
+==================================================================================================
+1. Launch Hybrid app and navigate to the WebView page or Launch Safari browser and navigate to the webpage.
+2. Open Desktop Safari
+3. Enable "Develop" Menu option if not already enabled. Go to Safari > Preferences > Advanced menu and enable "Show Develop menu in menu bar" option.
+4. Go to Develop Menu > Select Simulator and then the WebView page / Browser Page > It opens up the web inspector.
+5. Copy the CSS / Xpath or any other locator as you would do in Selenium.
+
+For Real Device
+===============
+Go to Safari > Advanced > Web Inspector and enable it.
